@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Template - Executive Summary</title>
+    <style>
+        body {
+            font-family: 'Bahnschrift', sans-serif;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #d4d4d4;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 290px;
+        }
+
+        .slide {
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #b5cea8;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #9cdcfe;
+        }
+
+        .text, .code {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            background-color: #3f3f3f;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .executive-summary {
+            background-color: #3f3f3f;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        .executive-summary h2 {
+            font-size: 32px;
+            color: #c5e1a5;
+            margin-bottom: 15px;
+        }
+
+        .executive-summary p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#summary">Executive Summary</a>
+    <a href="#slide1">Slide 1</a>
+    <a href="#slide2">Slide 2</a>
+    <a href="#slide3">Slide 3</a>
+    <a href="#slide4">Slide 4</a>
+    <a href="#slide5">Slide 5</a>
+    <a href="#slide6">Slide 6</a>
+    <a href="#slide7">Slide 7</a>
+</div>
+
+<div class="content">
+    <div class="slide" id="summary">
+        <div class="executive-summary">
+            <h2>Executive Summary Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <div class="slide" id="slide1">
+        <div class="title">Slide 1 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <ul class="text">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Sed do eiusmod tempor</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide2">
+        <div class="title">Slide 2 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <ol class="text">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Sed do eiusmod tempor</li>
+        </ol>
+    </div>
+
+    <div class="slide" id="slide3">
+        <div class="title">Slide 3 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="code">
+            <code>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </code>
+        </div>
+    </div>
+
+    <div class="slide" id="slide4">
+        <div class="title">Slide 4 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <img src="placeholder.jpg" alt="Placeholder Image" class="image">
+    </div>
+
+    <div class="slide" id="slide5">
+        <div class="title">Slide 5 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <ul class="text">
+            <li><strong>Lorem ipsum:</strong> dolor sit amet</li>
+            <li><strong>Consectetur:</strong> adipiscing elit</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide6">
+        <div class="title">Slide 6 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <ol class="text">
+            <li><em>Lorem ipsum</em> dolor sit amet</li>
+            <li><u>Consectetur</u> adipiscing elit</li>
+        </ol>
+    </div>
+
+    <div class="slide" id="slide7">
+        <div class="title">Slide 7 Title</div>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p class="subtitle">Subtitle Example</p>
+    </div>
+</div>
+
+</body>
+</html>

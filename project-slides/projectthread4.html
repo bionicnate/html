@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Sharing & Threat Intelligence - Executive Summary</title>
+    <style>
+        body {
+            font-family: 'Bahnschrift', sans-serif;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #d4d4d4;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 290px;
+        }
+
+        .slide {
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #b5cea8;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #9cdcfe;
+        }
+
+        .text, .code {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            background-color: #3f3f3f;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .executive-summary {
+            background-color: #3f3f3f;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        .executive-summary h2 {
+            font-size: 32px;
+            color: #c5e1a5;
+            margin-bottom: 15px;
+        }
+
+        .executive-summary p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#summary">Executive Summary</a>
+    <a href="#deployment">Deployment on Kubernetes</a>
+    <a href="#kubernetesManifests">1. Kubernetes Manifests</a>
+    <a href="#secureDataPersistence">2. Secure Data Persistence</a>
+    <a href="#accessControls">3. Proper Access Controls</a>
+    <a href="#automation">4. Automation of Backup or Alert Systems</a>
+    <a href="#kubernetesManifestExamples">Kubernetes Manifest Examples</a>
+    <a href="#keyConsiderations">Key Considerations</a>
+</div>
+
+<div class="content">
+    <div class="slide" id="summary">
+        <div class="executive-summary">
+            <h2>Thread 4: File Sharing & Threat Intelligence</h2>
+            <p><strong>Overview:</strong><br>Deploy a file sharing and collaboration platform (e.g., Nextcloud) alongside a threat intelligence service (such as MISP) to support secure data exchange and cybersecurity awareness.<br><br><strong>Requirements:</strong><br>- Use Kubernetes manifests to deploy and manage both services.<br>- Focus on secure data persistence, proper access controls, and automation of backup or alert systems as needed.</p>
+        </div>
+    </div>
+
+    <div class="slide" id="deployment">
+        <div class="title">Deployment on Kubernetes</div>
+        <p class="text">Here's a conceptual outline of how you would deploy Nextcloud and MISP on a Kubernetes environment:</p>
+    </div>
+
+    <div class="slide" id="kubernetesManifests">
+        <div class="title">1. Kubernetes Manifests</div>
+        <ul class="text">
+            <li>You'll create YAML files for:
+                <ul>
+                    <li>Nextcloud Deployment and Service</li>
+                    <li>MISP Deployment and Service</li>
+                    <li>PostgreSQL (or MySQL) Deployment and Service (for Nextcloud and MISP databases)</li>
+                    <li>Persistent Volume Claims (PVCs) for data persistence</li>
+                    <li>Ingress Configuration (for external access)</li>
+                    <li>Secrets (for database credentials, API keys, etc.)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide" id="secureDataPersistence">
+        <div class="title">2. Secure Data Persistence</div>
+        <ul class="text">
+            <li><strong>Nextcloud and MISP Databases:</strong>
+                <ul>
+                    <li>Use Persistent Volumes (PVs) and PVCs to store the databases.</li>
+                    <li>This ensures that database data is not lost if Pods are restarted or deleted.</li>
+                </ul>
+            </li>
+            <li><strong>Nextcloud Data Directory:</strong>
+                <ul>
+                    <li>Use a PVC to store the Nextcloud data directory, where user files are stored.</li>
+                </ul>
+            </li>
+            <li><strong>MISP Data Directory:</strong>
+                <ul>
+                    <li>Use a PVC to store MISP's data directory.</li>
+                </ul>
+            </li>
+            <li><strong>Backup Strategy:</strong>
+                <ul>
+                    <li>Implement a backup strategy for the Persistent Volumes.</li>
+                    <li>Consider using Kubernetes backup tools or cloud-based backup services.</li>
+                    <li>You could also use a cronjob to copy the persistent volumes to an offsite location.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide" id="accessControls">
+        <div class="title">3. Proper Access Controls</div>
+        <ul class="text">
+            <li><strong>Kubernetes Network Policies:</strong>
+                <ul>
+                    <li>Use Kubernetes Network Policies to restrict network traffic between Pods.</li>
+                    <li>For example, allow only necessary communication between Nextcloud and its database.</li>
+                </ul>
+            </li>
+            <li><strong>Nextcloud Access Controls:</strong>
+                <ul>
+                    <li>Configure Nextcloud's user management and sharing permissions.</li>
+                    <li>Integrate Nextcloud with an authentication provider (e.g., LDAP) for centralized user management.</li>
+                </ul>
+            </li>
+            <li><strong>MISP Access Controls:</strong>
+                <ul>
+                    <li>Configure MISP's user roles and permissions.</li>
+                    <li>Use MISP's organization and sharing features to control access to threat intelligence data.</li>
+                    <li>Protect MISP API keys. Use Kubernetes secrets.</li>
+                </ul>
+            </li>
+            <li><strong>Ingress Security:</strong>
+                <ul>
+                    <li>Use HTTPS for all external access.</li>
+                    <li>Implement rate limiting and other security measures on the Ingress controller.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide" id="automation">
+        <div class="title">4. Automation of Backup or Alert Systems</div>
+        <ul class="text">
+            <li><strong>Backup Automation:</strong>
+                <ul>
+                    <li>Use Kubernetes CronJobs to schedule regular backups of the databases and data directories.</li>
+                    <li>Automate the process of storing backups in a secure offsite location.</li>
+                </ul>
+            </li>
+            <li><strong>Alerting:</strong>
+                <ul>
+                    <li>Integrate MISP with a security information and event management (SIEM) systemor a notification system (e.g., Slack, email).</li>
+                    <li>Configure alerts for critical events, such as new threat intelligence indicators or security incidents.</li>
+                    <li>Use Kubernetes monitoring tools (e.g., Prometheus, Grafana) to monitor the health of the Nextcloud and MISP deployments.</li>
+                    <li>Configure alerts for resource utilization, Pod restarts, and other issues.</li>
+                </ul>
+            </li>
+            <li><strong>MISP automation:</strong>
+                <ul>
+                    <li>Use MISP's API to automate the creation and updating of events and attributes.</li>
+                    <li>Create custom scripts or tools to integrate MISP with other security tools.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide" id="kubernetesManifestExamples">
+        <div class="title">Kubernetes Manifest Examples</div>
+        <ul class="text">
+            <li><strong>Nextcloud Deployment:</strong>
+                <ul>
+                    <li>Use the official Nextcloud Docker image.</li>
+                    <li>Configure environment variables for database connections and other settings.</li>
+                    <li>Mount the PVC for the data directory.</li>
+                </ul>
+            </li>
+            <li><strong>MISP Deployment:</strong>
+                <ul>
+                    <li>Use the official MISP Docker image.</li>
+                    <li>Configure environment variables for database connections and API keys.</li>
+                    <li>Mount the PVC for the data directory.</li>
+                </ul>
+            </li>
+            <li><strong>PostgreSQL Deployment:</strong>
+                <ul>
+                    <li>Use the official PostgreSQL Docker image.</li>
+                    <li>Configure environment variables for database credentials.</li>
+                    <li>Mount the PVC for the database data.</li>
+                </ul>
+            </li>
+            <li><strong>Ingress Configuration:</strong>
+                <ul>
+                    <li>Use an Ingress controller to expose Nextcloud and MISP to the internet.</li>
+                    <li>Configure TLS/SSL certificates for HTTPS.</li>
+                </ul>
+            </li>
+            <li><strong>Secrets:</strong>
+                <ul>
+                    <li>Use Kubernetes Secrets to store database credentials, API keys, and other sensitive information.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide" id="keyConsiderations">
+        <div class="title">Key Considerations</div>
+        <ul class="text">
+            <li><strong>Security:</strong>
+                <ul>
+                    <li>Regularly update the Nextcloud and MISP applications and Docker images.</li>
+                    <li>Implement strong password policies.</li>
+                    <li>Use a firewall to restrict access to the Kubernetes cluster.</li>
+                </ul>
+            </li>
+            <li><strong>Scalability:</strong>
+                <ul>
+                    <li>Use Kubernetes Horizontal Pod Autoscaling to automatically scale the Nextcloud and MISP deployments.</li>
+                </ul>
+            </li>
+            <li><strong>Performance:</strong>
+                <ul>
+                    <li>Configure resource requests and limits for the Pods.</li>
+                    <li>Use a high-performance storage solution for the Persistent Volumes.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

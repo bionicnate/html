@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nextcloud Kubernetes Deployment Slides</title>
+    <style>
+        body {
+            font-family: 'Bahnschrift', sans-serif;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #d4d4d4;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 290px;
+        }
+
+        .slide {
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #b5cea8;
+        }
+
+        .text {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#slide1">Slide 1: Initialization</a>
+    <a href="#slide2">Slide 2: PostgreSQL Deployment</a>
+    <a href="#slide3">Slide 3: Redis Deployment</a>
+    <a href="#slide4">Slide 4: Nextcloud Core Deployment (Part 1)</a>
+    <a href="#slide5">Slide 5: Nextcloud Core Deployment (Part 2)</a>
+    <a href="#slide6">Slide 6: Deployment Monitoring</a>
+</div>
+
+<div class="content">
+
+    <div class="slide" id="slide1">
+        <div class="title">Slide 1: Initialization</div>
+        <ul class="text">
+            <li>Create a dedicated Kubernetes namespace: "nextcloud".</li>
+            <li>Store sensitive data (database credentials, admin passwords) in a Kubernetes Secret, using environment variables for security.</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide2">
+        <div class="title">Slide 2: PostgreSQL Deployment</div>
+        <ul class="text">
+            <li>Deploy a PostgreSQL database as a backend.</li>
+            <li>Utilize a PersistentVolumeClaim (PVC) for persistent storage (Longhorn).</li>
+            <li>Create a Kubernetes Service to expose the database within the cluster.</li>
+            <li>Deploy the PostgreSQL pod with credentials injected from the Secret.</li>
+            <li>Apply the PostgreSQL PVC, Service, and Deployment manifests.</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide3">
+        <div class="title">Slide 3: Redis Deployment</div>
+        <ul class="text">
+            <li>Deploy a Redis instance for caching.</li>
+            <li>Create a Kubernetes Service to expose Redis.</li>
+            <li>Deploy the Redis pod.</li>
+            <li>Apply the Redis Service and Deployment manifests.</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide4">
+        <div class="title">Slide 4: Nextcloud Core Deployment (Part 1)</div>
+        <ul class="text">
+            <li>Deploy the Nextcloud application itself.</li>
+            <li>Create PVCs for Nextcloud data storage (Longhorn and NFS).</li>
+            <li>Configure Traefik middleware for HTTP header settings and redirects.</li>
+            <li>Create a Kubernetes Service to expose Nextcloud.</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide5">
+        <div class="title">Slide 5: Nextcloud Core Deployment (Part 2)</div>
+        <ul class="text">
+            <li>Configure an Ingress resource for external HTTPS access (using Cert-Manager).</li>
+            <li>Deploy the Nextcloud pod, with environment variables for configuration.</li>
+            <li>Create a CronJob to handle Nextcloud cron tasks.</li>
+            <li>Apply all Nextcloud-related manifests (PVCs, middleware, Service, Ingress, Deployment, CronJob).</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide6">
+        <div class="title">Slide 6: Deployment Monitoring</div>
+        <ul class="text">
+            <li>Monitor pod status until all pods are in a "Running" state.</li>
+            <li>Verify certificate readiness.</li>
+            <li>Access the Nextcloud instance via the configured domain.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
